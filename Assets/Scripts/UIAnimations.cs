@@ -33,6 +33,8 @@ public class UIAnimations : MonoBehaviour
             transform.localScale += new Vector3(delta, delta, 0) * Time.deltaTime;
             yield return null; 
         }
+
+        transform.localScale = new Vector3(targetScale, targetScale, transform.localScale.z);
     }
 
     
