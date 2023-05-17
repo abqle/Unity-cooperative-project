@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
-
+    public int jumpForce;
     public float groundDrag;
     public float height;
     private bool grounded = true;
@@ -48,12 +48,15 @@ public class PlayerController : MonoBehaviour
 
         grounded = Physics.Raycast(transform.position, Vector3.down, height * 0.5f + 0.5f, whatIsGround);
 
-        Debug.Log(Speed);
-
         if (grounded)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
     }
 
     private void GetInput()
@@ -67,6 +70,11 @@ public class PlayerController : MonoBehaviour
         moveDirection = orientation.forward * vertInput + orientation.right * horizInput;
         
         rb.AddForce(moveDirection.normalized * Speed * 10f);
+    }
+
+    private void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     private void SpeedControl()

@@ -563,6 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 7
+  jumpForce: 15
   groundDrag: 5
   height: 15
   orientation: {fileID: 1271533985}
