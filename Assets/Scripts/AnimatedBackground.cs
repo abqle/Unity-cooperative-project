@@ -13,12 +13,12 @@ public class AnimatedBackground : MonoBehaviour
         img.material = new Material(img.material);
         material = img.material;
         material.name = material.name + " (CLONE)";
-        StartCoroutine(frequency());
+        
 
     }
-
-    void Update()
+    private void OnEnable()
     {
+        StartCoroutine(frequency());
     }
 
     IEnumerator frequency()
